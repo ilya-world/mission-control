@@ -290,6 +290,10 @@ textarea {
   z-index: 10;
 }
 
+.modal[hidden] {
+  display: none;
+}
+
 .modal-content {
   background: #fff;
   padding: 24px;
