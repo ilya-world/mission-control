@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mission Control</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <h2>Области</h2>
+          <div class="areas" id="areas"></div>
+          <button class="secondary" id="add-area">+ Область</button>
+        </div>
+        <div class="sidebar-section">
+          <h2>Виды</h2>
+          <div class="views" id="views"></div>
+          <button class="secondary" id="add-view">+ Вид</button>
+        </div>
+        <div class="sidebar-section">
+          <h2>Поиск</h2>
+          <input id="search" type="search" placeholder="Поиск по задачам" />
+          <div class="search-results" id="search-results"></div>
+        </div>
+        <div class="sidebar-section">
+          <h2>Экспорт/Импорт</h2>
+          <button class="secondary" id="export-json">Экспорт JSON</button>
+          <label class="secondary file-button">
+            Импорт JSON
+            <input type="file" id="import-json" accept="application/json" />
+          </label>
+          <button class="secondary" id="export-csv">Экспорт To-Do CSV</button>
+        </div>
+        <div class="sidebar-section">
+          <h2>Горячие клавиши</h2>
+          <div class="hotkeys" id="hotkeys"></div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="main-header">
+          <div class="tabs">
+            <button class="tab active" data-tab="outline">Схема</button>
+            <button class="tab" data-tab="todo">To-Do</button>
+          </div>
+          <div class="status" id="status">Автосохранение включено</div>
+        </header>
+
+        <section class="content" id="outline" data-tab-panel>
+          <div class="panel-header">
+            <h1>Схема</h1>
+            <div class="panel-actions">
+              <button id="add-root-task">+ Задача</button>
+              <button id="add-root-project">+ Проект</button>
+              <button id="add-root-folder">+ Папка</button>
+            </div>
+          </div>
+          <div class="tree" id="tree"></div>
+        </section>
+
+        <section class="content" id="todo" data-tab-panel hidden>
+          <div class="panel-header">
+            <h1>To-Do</h1>
+            <div class="panel-actions">
+              <select id="active-view"></select>
+              <label class="checkbox">
+                <input type="checkbox" id="hide-completed" />
+                Скрывать завершенные
+              </label>
+            </div>
+          </div>
+          <div class="filters" id="filters"></div>
+          <div class="todo-list" id="todo-list"></div>
+        </section>
+      </main>
+
+      <aside class="inspector" id="inspector">
+        <div class="inspector-header">
+          <h2>Инспектор</h2>
+          <button class="secondary" id="close-inspector">Закрыть</button>
+        </div>
+        <div class="inspector-body" id="inspector-body">
+          <p>Выберите задачу, чтобы увидеть свойства.</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="modal" id="reminder-modal" hidden>
+      <div class="modal-content">
+        <h2>Напоминания</h2>
+        <div id="reminder-list"></div>
+        <button class="secondary" id="dismiss-reminders">Закрыть</button>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
